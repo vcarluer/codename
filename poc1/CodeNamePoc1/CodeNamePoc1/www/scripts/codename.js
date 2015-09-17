@@ -5,7 +5,8 @@
 
 	Codename.prototype.run = function () {
 		this.div = document.getElementById("codename");
-		this.div.innerHTML = "Hello codename";
+		var firstText = new Codename.TextBlock(this);
+		firstText.setText("Hello agent");
 	};
 
 }());
