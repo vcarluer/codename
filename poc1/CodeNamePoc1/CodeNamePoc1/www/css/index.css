@@ -15,7 +15,33 @@
 .textblock {
 	border: 1px solid white;
 	border-radius: 10px;
+	margin-bottom: 5px;
 	padding: 10px;
 	color: white;
 	width: 90%;
+	animation: move 1s ease-out;
+	position: relative;
+	background-color: darkslategray;
+}
+
+.textblockright {
+	border: 1px solid white;
+	border-radius: 10px;
+	margin-bottom: 5px;
+	padding: 10px;
+	color: white;
+	width: 90%;
+	animation: move 1s ease-out;
+	position: relative;
+	text-align: right;
+	background-color: dimgray;
+}
+
+@keyframes move {
+	0% {
+		top: 1000px;
+	}
+	100% {
+		top: 0px;
+	}
 }
