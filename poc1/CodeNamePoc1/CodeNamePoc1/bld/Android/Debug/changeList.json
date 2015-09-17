@@ -82,18 +82,16 @@
     "plugins\\cordova-plugin-whitelist\\README.md",
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
-    "www\\scripts\\tweenjs-0.6.1.min.js",
-    "www\\scripts\\textblock.js"
+    "www\\scripts\\textblock.js",
+    "www\\images\\earth.png"
   ],
   "deletedFilesIos": [
-    "www\\scripts\\codename - Copy.js"
+    "www\\scripts\\codename - Copy.js",
+    "www\\scripts\\tweenjs-0.6.1.min.js"
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [
-    "www\\scripts\\codename.js",
-    "www\\css\\index.css"
-  ],
+  "changedFiles": [],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

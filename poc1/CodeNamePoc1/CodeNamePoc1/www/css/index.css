@@ -9,7 +9,44 @@
 	width: 100%;
 	height: 100%;
 	background-color: black;
+	padding: 0px;
+	background-image: url("../images/earth.png");
+	animation: move-background 60s linear infinite;
+}
+
+.chat {
+	width: 100%;
 	padding: 10px;
+	margin: 0px;
+	bottom:90px;
+	position: absolute;
+}
+
+.choices {
+	border-top-color: white;
+	border-top-width: 2px;
+	border-top-style: solid;
+	height:90px;
+	width: 100%;
+	padding-top: 5px;
+	margin: 0px;
+	bottom: 0px;
+	position: absolute;
+	background-image: url("../images/earth.png");
+}
+
+.choiceButton {
+	border: 1px solid white;
+	border-radius: 20px;
+	padding: 10px;
+	color: white;
+	width: 85%;
+	/*animation: move 1s ease-out;*/
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	background-color: rgba(47, 79, 79, 0.7);
 }
 
 .textblock {
@@ -18,10 +55,10 @@
 	margin-bottom: 5px;
 	padding: 10px;
 	color: white;
-	width: 90%;
-	animation: move 1s ease-out;
+	width: 60%;
+	/*animation: move 1s ease-out;*/
 	position: relative;
-	background-color: darkslategray;
+	background-color: rgba(47, 79, 79, 0.7);
 }
 
 .textblockright {
@@ -30,11 +67,13 @@
 	margin-bottom: 5px;
 	padding: 10px;
 	color: white;
-	width: 90%;
-	animation: move 1s ease-out;
+	width: 60%;
+	margin-left: auto;
+	margin-right: 20px;
+	/*animation: move 1s ease-out;*/
 	position: relative;
 	text-align: right;
-	background-color: dimgray;
+	background-color: rgba(105, 105, 105, 0.7);
 }
 
 @keyframes move {
@@ -43,5 +82,17 @@
 	}
 	100% {
 		top: 0px;
+	}
+}
+
+@keyframes move-background {
+	0% {
+		background-position-x: 0px;
+	}
+	50% {
+		background-position-x: -900px;
+	}
+	100% {
+		background-position-x: 0px;
 	}
 }

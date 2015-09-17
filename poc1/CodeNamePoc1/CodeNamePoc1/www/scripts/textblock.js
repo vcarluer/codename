@@ -1,9 +1,7 @@
 ﻿(function () {
 	"use strict";
 
-	var TextBlock = function (codename) {
-		this.init(codename);
-	};
+	var TextBlock = function () { };
 
 	Codename.TextBlock = TextBlock;
 
@@ -34,8 +32,12 @@
 	};
 
 	TextBlock.prototype.directShow = function (codename, text) {
-		codename.div.appendChild(this.div);
 		this.setText(text);
+		this.addElement(codename);
+	};
+
+	TextBlock.prototype.addElement = function (codename) {
+		codename.addChat(this.div);
 	};
 
 	TextBlock.prototype.setText = function (text) {
