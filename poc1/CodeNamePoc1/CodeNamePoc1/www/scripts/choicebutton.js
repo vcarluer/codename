@@ -12,6 +12,7 @@
 	ChoiceButton.prototype.init = function (codename) {
 		Codename.TextBlock.prototype.init.call(this, codename, false);
 		this.div.className = "choiceButton";
+		this.divText.className = "";
 		var self = this;
 		this.div.onclick = function () {
 			self.click();

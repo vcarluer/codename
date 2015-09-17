@@ -83,7 +83,8 @@
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
     "www\\scripts\\textblock.js",
-    "www\\images\\earth.png"
+    "www\\images\\earth.png",
+    "www\\scripts\\choicebutton.js"
   ],
   "deletedFilesIos": [
     "www\\scripts\\codename - Copy.js",
@@ -91,7 +92,11 @@
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
-  "changedFiles": [],
+  "changedFiles": [
+    "www\\css\\index.css",
+    "www\\scripts\\choicebutton.js",
+    "www\\scripts\\textblock.js"
+  ],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []

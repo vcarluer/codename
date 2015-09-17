@@ -13,10 +13,18 @@
 
 	TextBlock.prototype.init = function (codename, right) {
 		this.div = document.createElement("div");
+		this.divText = document.createElement("div");
+		
+		this.p = document.createElement("p");
+		this.p.className = "talktextp";
+		this.divText.appendChild(this.p);
+		this.div.appendChild(this.divText);
 		if (right) {
-			this.div.className = "textblockright";
+			this.div.className = "talk-bubble talk-right tri-right round border btm-right-in";
+			this.divText.className = "talktext talk-right";
 		} else {
-			this.div.className = "textblock";
+			this.div.className = "talk-bubble tri-right round border btm-left-in";
+			this.divText.className = "talktext";
 		}
 	};
 
@@ -41,7 +49,11 @@
 	};
 
 	TextBlock.prototype.setText = function (text) {
-		this.div.innerHTML = text;
+		this.p.innerHTML = text;
+	};
+
+	TextBlock.prototype.setNext = function (next) {
+		this.next = next;
 	};
 
 }());

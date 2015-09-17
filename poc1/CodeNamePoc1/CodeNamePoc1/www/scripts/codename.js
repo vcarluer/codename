@@ -9,7 +9,11 @@
 
 	Codename.prototype.run = function () {
 		Codename.Attach(this);
+	
 		this.div = document.getElementById("codename");
+		/*this.divMenu = document.createElement("div");
+		this.divMenu.className = "menu";
+		this.div.appendChild(this.divMenu);*/
 		this.chatDiv = document.createElement("div");
 		this.chatDiv.className = "chat";
 		this.div.appendChild(this.chatDiv);
@@ -18,7 +22,7 @@
 		this.choiceDiv.className = "choices";
 		this.div.appendChild(this.choiceDiv);
 
-		var base = 100;
+		var base = 500;
 		Codename.TextBlock.Add({ text: "Hello agent Cross", delay: base });
 		Codename.TextBlock.Add({ text: "How are you?", delay: base * 2 });
 		Codename.TextBlock.Add({ text: "Quite fine", delay: base * 4, right: true });
