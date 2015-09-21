@@ -23,6 +23,7 @@
     "www\\css\\index.css",
     "res\\icons\\windows\\StoreLogo.scale-240.png",
     "res\\screens\\ios\\screen-ipad-landscape.png",
+    "www\\scripts\\textblock.js",
     "res\\icons\\ios\\icon-60-3x.png",
     "plugins\\cordova-plugin-whitelist\\whitelist.js",
     "plugins\\fetch.json",
@@ -65,6 +66,7 @@
     "res\\icons\\ios\\icon-small-2x.png",
     "plugins\\cordova-plugin-whitelist\\LICENSE",
     "res\\icons\\windows\\Square70x70Logo.scale-100.png",
+    "www\\scripts\\choicebutton.js",
     "res\\screens\\windows\\SplashScreen.scale-240.png",
     "plugins\\cordova-plugin-whitelist\\src\\ios\\CDVNavigationWhitelistPlugin.h",
     "res\\icons\\android\\icon-96-xhdpi.png",
@@ -79,23 +81,23 @@
     "plugins\\cordova-plugin-whitelist\\RELEASENOTES.md",
     "res\\screens\\android\\screen-xhdpi-landscape.png",
     "plugins\\cordova-plugin-whitelist\\src\\ios\\CDVNavigationWhitelistPlugin.m",
+    "www\\images\\earth.png",
     "plugins\\cordova-plugin-whitelist\\README.md",
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
-    "www\\scripts\\textblock.js",
-    "www\\images\\earth.png",
-    "www\\scripts\\choicebutton.js"
+    "www\\images\\av1.png",
+    "www\\images\\av2.png"
   ],
   "deletedFilesIos": [
-    "www\\scripts\\codename - Copy.js",
-    "www\\scripts\\tweenjs-0.6.1.min.js"
+    "www\\images\\anonyme.png",
+    "www\\images\\avatar1-4.png"
   ],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
     "www\\css\\index.css",
-    "www\\scripts\\choicebutton.js",
-    "www\\scripts\\textblock.js"
+    "www\\scripts\\textblock.js",
+    "www\\scripts\\codename.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

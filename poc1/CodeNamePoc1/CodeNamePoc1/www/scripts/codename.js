@@ -30,16 +30,16 @@
 		Codename.ChoiceButton.Add({ text: "Tell me", delay: base * 6.5 });
 		Codename.ChoiceButton.Add({ text: "Listen to me", delay: base * 6.5 });
 
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 7, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 8, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 9, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 10, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 11, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 12, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 13, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 14, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 15, right: true });
-		Codename.TextBlock.Add({ text: "Dummy", delay: base * 16, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 7, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 8, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 9, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 10, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 11, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 12, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 13, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 14, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 15, right: true });
+		//Codename.TextBlock.Add({ text: "Dummy", delay: base * 16, right: true });
 	};
 
 	Codename.prototype.addChat = function (newDiv) {
