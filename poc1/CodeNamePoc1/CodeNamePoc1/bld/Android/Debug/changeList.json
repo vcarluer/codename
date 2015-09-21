@@ -96,8 +96,7 @@
   "deletedPluginsIos": [],
   "changedFiles": [
     "www\\css\\index.css",
-    "www\\scripts\\textblock.js",
-    "www\\scripts\\codename.js"
+    "www\\scripts\\textblock.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

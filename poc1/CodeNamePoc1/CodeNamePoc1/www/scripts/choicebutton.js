@@ -10,9 +10,12 @@
 	};
 
 	ChoiceButton.prototype.init = function (codename) {
-		Codename.TextBlock.prototype.init.call(this, codename, false);
+		this.div = document.createElement("div");
 		this.div.className = "choiceButton";
-		this.divText.className = "";
+		this.p = document.createElement("p");
+		this.p.className = "talktextp";
+		this.div.appendChild(this.p);
+
 		var self = this;
 		this.div.onclick = function () {
 			self.click();

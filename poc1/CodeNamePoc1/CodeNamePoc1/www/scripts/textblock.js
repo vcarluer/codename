@@ -23,7 +23,11 @@
 
 	TextBlock.prototype.init = function (codename, right) {
 		this.div = document.createElement("div");
-		this.div.className = "chatLine";
+		this.div.className = "chatLineWrapper";
+		this.divFix = document.createElement("div");
+		this.divFix.className = "chatLine";
+		this.div.appendChild(this.divFix);
+
 		this.divAvatar = document.createElement("div");
 		this.divAvatar.className = "avatar";
 		this.img = document.createElement("img");
@@ -36,7 +40,7 @@
 		}
 
 		this.divAvatar.appendChild(this.img);
-		this.div.appendChild(this.divAvatar);
+		this.divFix.appendChild(this.divAvatar);
 
 		this.divBubble = document.createElement("div");
 		this.divText = document.createElement("div");
@@ -46,7 +50,7 @@
 		this.divText.appendChild(this.p);
 		this.divBubble.appendChild(this.divText);
 
-		this.div.appendChild(this.divBubble);
+		this.divFix.appendChild(this.divBubble);
 		if (right) {
 			this.divBubble.className = "talk-bubble talk-right tri-right right-top";
 			this.divText.className = "talktext talk-right";
@@ -56,13 +60,11 @@
 		}
 
 		this.divTimestamp = document.createElement("div");
-		this.divTimestamp.className = "talk-bubble";
-		if (right) this.divTimestamp.className += " talk-right";
-		this.divTimestamp.className += " chatTime";
+		this.divTimestamp.className = "chatTime";
 		var currentdate = new Date(); 
 		var datetime = currentdate.today() + " " + currentdate.timeNow();
 		this.divTimestamp.innerHTML = datetime;
-		this.div.appendChild(this.divTimestamp);
+		this.divBubble.appendChild(this.divTimestamp);
 	};
 
 	TextBlock.prototype.show = function (codename, delay, text) {

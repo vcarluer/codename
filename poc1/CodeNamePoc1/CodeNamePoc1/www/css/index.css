@@ -27,6 +27,7 @@
 	margin: 0px;
 	bottom:90px;
 	position: absolute;
+	display: table;
 }
 
 .choices {
@@ -91,13 +92,27 @@
 	float: right;
 }
 
+.avatar {
+	height: 100%;
+}
+
 .avatar img {
 	width: 48px;
 	height: 48px;
+	transform: translateY(-66%);
+    -webkit-transform: translateY(-66%);
 }
 
 .chatLine {
-	margin-bottom: 20px;
+	width: inherit;
+}
+
+.chatLineWrapper {
+	display:table;
+	position: relative;
+	width: 100%;
+	margin-bottom: 15px;
+	background-color: rgba(255, 255, 255, 0.4);
 }
 
 .chatTime {
@@ -140,15 +155,14 @@
 	position: relative;
 	height: auto;
 	background-color: lightyellow;
-	margin-left: 55px;
-	margin-right: 15px;
+	display: inline-block;
+	max-width: 80%;
 }
 
 .talk-right {
-	margin-left: auto;
-	margin-right: 60px;
 	background-color: rgb(20, 35, 74);
 	color: white;
+	float: right;
 }
 
 .border{
@@ -168,7 +182,6 @@
 	width: 0;
 	height: 0;
   left: -40px;
-	right: auto;
   top: -8px;
 	bottom: auto;
 	border: 32px solid;
@@ -380,7 +393,7 @@
 
 /* talk bubble contents */
 .talktext{
-  padding: 1em;
+  padding: 0.5em;
 	text-align: left;
   line-height: 1.5em;
 }
