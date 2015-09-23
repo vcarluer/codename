@@ -1,0 +1,7 @@
+﻿{
+	"season": 1,
+	"episode": 1,
+	"title": "Le dilemne de la chèvre",
+	"onReady": "script:episode.js",
+	"callMe": "code:console.log('callMe');"
+}

@@ -1,0 +1,29 @@
+﻿{
+	"persona": ["dop", "agent1"],
+	"script": [
+		{ "p": 0, "t": "Agent Carter, vous m'entendez?" },
+		{ "p": 0, "t": "C'est très important je dois vous parler?" },
+		{ "p": 1, "t": "Actif" },
+		{ "p": 0, "t": "Faites-moi un bilan de votre status" },
+		{ "p": 1, "t": "En cours de filature dans les quartiers nord" },
+		{ "p": 1, "t": "Je pense avoir repéré la malette", "c": "choice1"}
+	],
+
+	"choice1": {
+		"choices": [
+			{ "t": "Laisse tomber", "s": "s1" },
+			{ "t": "OK continue", "s": "s2" }
+		],
+		"timeout": 10000
+	},
+
+	"s1":  [
+		{ "p": 1, "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
+		{ "p": 0, "t": "Tu ne sais pas tout" }
+	],
+
+	"s2": [
+		{ "p": 1, "t": "Je vais peut-être avoir besoin de renfort" },
+		{ "p": 0, "t": "Je vais voir si Shark est op" }
+	]
+}

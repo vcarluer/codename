@@ -30,6 +30,8 @@
     "config.xml",
     "res\\screens\\wp8\\SplashScreenImage.jpg",
     "res\\screens\\ios\\screen-ipad-landscape-2x.png",
+    "www\\images\\av2.png",
+    "www\\images\\av1.png",
     "res\\screens\\ios\\screen-iphone-568h-2x.png",
     "res\\icons\\windows\\Square150x150Logo.scale-100.png",
     "package.json",
@@ -85,17 +87,14 @@
     "plugins\\cordova-plugin-whitelist\\README.md",
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
-    "www\\images\\av1.png",
-    "www\\images\\av2.png"
+    "www\\data\\s01e01\\episode.json"
   ],
-  "deletedFilesIos": [
-    "www\\images\\anonyme.png",
-    "www\\images\\avatar1-4.png"
-  ],
+  "deletedFilesIos": [],
   "addedPluginsIos": [],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "www\\css\\index.css"
+    "www\\data\\s01e01\\episode.json",
+    "www\\scripts\\codename.js"
   ],
   "deletedFiles": [],
   "addedPlugins": [],
