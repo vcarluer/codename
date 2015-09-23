@@ -1,6 +1,6 @@
 ﻿(function () {
 	"use strict";
-	var speed = 10; //500
+	var speed = 500; //500 or 10
 
 	var Dialog = function () {
 		this.choices = [];

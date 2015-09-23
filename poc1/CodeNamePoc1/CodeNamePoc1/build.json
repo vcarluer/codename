@@ -1,11 +1,11 @@
 {
      "android": {
          "release": {
-             "keystore": "",
-             "storePassword": "",
-             "alias": "",
-             "password" : "",
-             "keystoreType": ""
+             "keystore": "C:/dev/keystore/keystore",
+             "storePassword": "Follow the white rabbit",
+             "alias": "GamersAssociate",
+             "password" : "Gamers666",
+             "keystoreType": "PKCS12"
          }
      }
  }

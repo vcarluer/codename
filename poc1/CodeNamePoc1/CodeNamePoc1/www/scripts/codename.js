@@ -95,6 +95,21 @@
 
 	};
 
+	Codename.isRipple = function () {
+	    return (typeof window.parent.ripple !== "undefined");
+	};
+
+	Codename.getDataDirectory = function () {
+	    var path;
+	    if (!Codename.isRipple()) {
+	        path = cordova.file.applicationDirectory + "www/data/"
+	    } else {
+	        path = /data/;
+	    }
+
+	    return path;
+	};
+
 	Codename.prototype.addChat = function (newDiv) {
 		this.chatDiv.appendChild(newDiv);
 	};

@@ -12,8 +12,8 @@
 	Episode.prototype.create = function (episodeCode) {
 		this.episodeCode = episodeCode;
 		var self = this;
-		this.episodePath = "/data/" + this.episodeCode + "/";
-		Codename.loadGameObject(this.episodePath, "episode.json", function (episode) {
+		this.episodePath = Codename.getDataDirectory() + this.episodeCode + "/";
+		Codename.loadGameObject(this.episodePath, "ep.json", function (episode) {
 			self.run(episode);
 		});
 	};
