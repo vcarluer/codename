@@ -15,12 +15,16 @@
 			{ "t": "OK continue", "s": "dialog12.json" }
 		],
 		"timeout": 10000,
-		"default": "s2"
+		"default": "s1"
 	},
 
 	"s1":  [
 		{ "p": 0, "t": "Laisse tomber tout de suite" },
 		{ "p": 1, "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
 		{ "p": 0, "t": "Tu ne sais pas tout" }
+	],
+
+	"s2":  [
+		{ "p": 1, "t": "Bon vu que tu ne me réponds pas j'annule tout" }
 	]
 }

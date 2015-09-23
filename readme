@@ -1,1 +1,57 @@
 Code name game project.
+=======================
+poc1: First poc for game
+------------------------
+Only a chat system
+css is quite ok now
+dynamic game object loading: codename is a game engine with dynamic game episodes loaded on demand.
+
+### Dynamic load of objects
+codename load json data for each episode.
+Episodes data is stored in /data/EPISODE_NAME
+When loading an episode codename load episode.json and run dialog1.json.
+
+it is possible to define function with 2 markers:
+script: External .js file to load and affected to the function
+code: Direct code executed with eval() and affected to the function
+example:
+{
+	"season": 1,
+	"episode": 1,
+	"title": "Le dilemne de la chèvre",
+	"onReady": "script:episode.js",
+	"callMe": "code:console.log('callMe');"
+}
+where episode.js is:
+console.log("tata");
+this.callMe();
+
+### Dialogs, scripts and choices
+Dialogs are separated into persona, scripts and choices.
+Persona are not really used for now, it is an array of names.
+Scripts are chained of texts the user cannot interact with. Persona 0 is displayed at left of chat, the others at right.
+Choices are list of button with action.
+Action can be of 2 kinds:
+* Other script in the same dialog: put the name of script node
+* Another dialog file: put the name of dialog json file in node
+
+This is done to split complex dialog trees and create interconnected dialogs.
+Example:
+choice1": {
+		"choices": [
+			{ "t": "Laisse tomber", "s": "s1" },
+			{ "t": "OK continue", "s": "dialog12.json" }
+		],
+		"timeout": 10000,
+		"default": "s2"
+	}
+	
+The timeout is a limit for player to respond, which will fallback to the default script.
+
+To run a new scenario the only code to call is: Codename.Episode.Add("s01e01");
+And this scenario must then define all its dialog and other informations.
+
+
+Next step:
+* Use of shared variable / scripts in choice action
+* Implement timeout choice
