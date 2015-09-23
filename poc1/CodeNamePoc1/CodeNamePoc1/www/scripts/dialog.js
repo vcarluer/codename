@@ -8,13 +8,15 @@
 
 	Codename.Dialog = Dialog;
 
-	Dialog.Add = function (episodePath, dialogName) {
+	Dialog.Add = function (episode, dialogName) {
 		var dialog = new Codename.Dialog();
-		dialog.create(episodePath, dialogName);
+		dialog.create(episode, dialogName);
 	};
 
-	Dialog.prototype.create = function (dialogPath, dialogName) {
+	Dialog.prototype.create = function (episode, dialogName) {
 		var self = this;
+		var dialogPath = episode.episodePath;
+		this.episode = episode;
 		Codename.loadGameObject(dialogPath, dialogName, function (dialog) {
 			self.dialog = dialog;
 			self.run();
@@ -61,12 +63,23 @@
 
 	Dialog.prototype.addChoiceButton = function (choice, delay) {
 		var self = this;
-		var choiceScript = this.dialog[choice.s];
+		var choiceScript, choiceDialog;
+		if (choice.s.indexOf(".json") > -1) {
+			choiceDialog = choice.s;
+		} else {
+			choiceScript = this.dialog[choice.s];
+		}
+		 
 		var button = Codename.ChoiceButton.Add({
 			text: choice.t,
 			delay: delay,
 			onClick: function () {
-				self.addScript(choiceScript);
+				if (choiceScript) {
+					self.addScript(choiceScript);
+				} else {
+					self.episode.addDialog(choiceDialog);
+				}
+				
 				self.clearButtons();
 			}
 		});

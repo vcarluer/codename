@@ -21,8 +21,12 @@
 	Episode.prototype.run = function (episode) {
 		if (episode) {
 			var dialogEntry = "dialog1.json";
-			Codename.Dialog.Add(this.episodePath, dialogEntry);
+			this.addDialog(dialogEntry);
 		}
+	}
+
+	Episode.prototype.addDialog = function (dialogName) {
+		Codename.Dialog.Add(this, dialogName);
 	}
 
 }());
