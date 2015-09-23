@@ -15,7 +15,7 @@
 			{ "t": "OK continue", "s": "dialog12.json" }
 		],
 		"timeout": 10000,
-		"default": "s1"
+		"default": "s2"
 	},
 
 	"s1":  [
