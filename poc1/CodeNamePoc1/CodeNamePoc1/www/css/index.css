@@ -25,26 +25,26 @@
 	width: 100%;
 	padding: 10px;
 	margin: 0px;
-	bottom:0px;
+	bottom:90px;
 	position: absolute;
 	display: table;
-	animation: reduceChatChoice 1s ease-out 3s;
-	animation-fill-mode: forwards;
+	/*animation: reduceChatChoice 1s ease-out 3s;
+	animation-fill-mode: forwards;*/
 }
 
 .choices {
 	border-top-color: white;
 	border-top-width: 2px;
 	border-top-style: solid;
-	height:0px;
+	height:90px;
 	width: 100%;
 	padding-top: 5px;
 	margin: 0px;
 	bottom: 0px;
 	position: absolute;
 	background-image: url("../images/earth.png");
-	animation: openChoice 1s ease-out 3s;
-	animation-fill-mode: forwards;
+	/*animation: openChoice 1s ease-out 3s;
+	animation-fill-mode: forwards;*/
 }
 
 .choiceButton {

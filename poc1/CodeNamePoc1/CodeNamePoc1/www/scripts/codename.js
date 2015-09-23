@@ -120,7 +120,11 @@
 		this.chatDiv.appendChild(newDiv);
 	};
 	Codename.prototype.addChoice = function (newDiv) {
-		this.choiceDiv.appendChild(newDiv);
+		this.choiceDiv.appendChild(newDiv);		
+	};
+
+	Codename.prototype.removeChoice = function (div) {
+		this.choiceDiv.removeChild(div);
 	};
 
 }());

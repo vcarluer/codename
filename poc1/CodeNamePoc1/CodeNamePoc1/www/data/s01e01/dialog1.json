@@ -14,15 +14,18 @@
 			{ "t": "Laisse tomber", "s": "s1" },
 			{ "t": "OK continue", "s": "s2" }
 		],
-		"timeout": 10000
+		"timeout": 10000,
+		"default": "s2"
 	},
 
 	"s1":  [
+		{ "p": 0, "t": "Laisse tomber tout de suite" },
 		{ "p": 1, "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
 		{ "p": 0, "t": "Tu ne sais pas tout" }
 	],
 
 	"s2": [
+		{ "p": 0, "t": "Continue, très bonne initiative" },
 		{ "p": 1, "t": "Je vais peut-être avoir besoin de renfort" },
 		{ "p": 0, "t": "Je vais voir si Shark est op" }
 	]
