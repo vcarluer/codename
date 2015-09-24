@@ -16,10 +16,11 @@
 
 	Dialog.prototype.create = function (episode, dialogName) {
 		var self = this;
-		var dialogPath = episode.episodePath;
+		this.dialogPath = episode.episodePath;
 		this.episode = episode;
-		Codename.loadGameObject(dialogPath, dialogName, function (dialog) {
-			self.dialog = dialog;
+		Codename.loadGameObject(this.dialogPath, dialogName, function (dialog) {
+		    self.dialog = dialog;
+		    dialog.dialog = self;
 			self.run();
 		});
 	};
@@ -38,9 +39,22 @@
 		}
 	}
 
-	Dialog.prototype.addScript = function (script) {
-		if (script) {
-		    this.readLine(script, 0);
+	Dialog.prototype.addScriptByName = function (scriptName, delay) {
+	    var script = this.dialog[scriptName];
+	    if (script) {
+	        this.addScript(script, delay);
+	    } else {
+	        console.log("bad script name: " + scriptName);
+	    }
+	};
+
+	Dialog.prototype.addScript = function (script, delay) {
+	    if (script) {
+	        var self = this;
+	        if (!delay)
+	            delay = 0;
+
+	        setTimeout(function () { self.readLine(script, 0); }, delay);
 		} else {
 			console.log("script does not exist");
 		}		
@@ -49,7 +63,9 @@
 	Dialog.prototype.readLine = function (script, i) {
 	    if (script && i < script.length) {
 	        var self = this;
+	        var delay = 0;
 	        var line = script[i];
+	        line.dialog = this;
 	        if (line.p === 0 && line.b) {
 	            var buttonText = line.b;
 	            this.addChoiceButton({
@@ -62,10 +78,11 @@
 	                            }
 	                        }
 	                    });
+
+	                    self.callFunction(line, delay);
 	                }
 	            });
 	        } else { // Other text line
-	            var delay = 0;
 	            var right = line.p !== 0;
 	            if (right) {
 	                delay = speed + line.t.split(" ").length * speed;
@@ -73,6 +90,7 @@
 	            Codename.TextBlock.Add({
 	                text: line.t, delay: delay, right: right, callback: function () {
 	                    i++;
+	                    self.callFunction(line, delay);
 	                    if (i < script.length) {
 	                        self.readLine(script, i);
 	                    }
@@ -82,9 +100,18 @@
 	            if (line.c) {
 	                this.addChoice(this.dialog[line.c],delay);
 	            }
-	        }
+	        }        
 	    } else {
 	        console.log("script does not exist");
+	    }
+	};
+
+	Dialog.prototype.callFunction = function (line, delay) {
+	    if (line.f) {
+	        var self = this;
+	        setTimeout(function () {
+	            Codename.executeFunction(self.dialogPath, line);
+	        }, delay);
 	    }
 	};
 

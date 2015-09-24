@@ -34,12 +34,14 @@
 		// Codename.Episode.Add("s01e01");
 	};
 
+	var scriptSeparator = "script:";
+	var codeSeparator = "code:";
+
 	Codename.loadGameObject = function (gameObjectPath, gameObjectRoot, onLoaded) {
 		var gameObjectManifest = gameObjectPath + gameObjectRoot;
 		Codename.ajax(gameObjectManifest, function (gameObject) {
 			var keys = Object.keys(gameObject);
-			var scriptSeparator = "script:";
-			var codeSeparator = "code:";
+			
 			var ready = keys.length;
 			var idx, val, i, script, scriptName, methodName, code;
 
@@ -73,6 +75,27 @@
 			}
 		}, true);
 	};
+
+	Codename.executeFunction = function (gameObjectPath, gameObject) {
+	    var idx;
+	    var val = gameObject.f;
+	    idx = val.indexOf(scriptSeparator);
+	    if (idx > -1) { // Load an external js script
+	        var script = val.substr(scriptSeparator.length);
+	        Codename.ajax(gameObjectPath + script, function (func) {
+	            gameObject.f = new Function(func);
+	            gameObject.f();
+	        })
+	    } else {
+	        idx = val.indexOf(codeSeparator);
+	        if (idx > -1) { // load an inline js code
+	            var code = val.substr(codeSeparator.length);
+	            gameObject.f = new Function(code);
+	            gameObject.f();
+	        }
+	    }
+    }
+
 
 	Codename.testReady = function (ready, gameObject, onLoaded) {
 		if (ready === 0 && gameObject.onReady) {

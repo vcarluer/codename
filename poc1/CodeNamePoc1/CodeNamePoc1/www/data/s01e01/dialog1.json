@@ -2,8 +2,14 @@
   "persona": [ "dop", "agent1" ],
   
 	"initialScript": [
-		{ "p": 0, "b":  "Vous êtes là?", "t": "Agent Carter, vous êtes là?" },
-		{ "p": 0, "b":  "Insister", "t": "C'est très important je dois vous parler?" },
+		{ "p": 0, "b":  "Vous êtes là?", "t": "Agent Carter, vous êtes là?", "f": "code:this.dialog.addScriptByName('insister', 15000);" }
+   ],
+
+  "insister": [
+		  { "p": 0, "b":  "Insister", "t": "C'est très important je dois vous parler?" }
+  ],
+
+  "reponse1": [
 		{ "p": 1, "t": "Actif" },
 		{ "p": 0, "b":  "Status", "t": "Faites-moi un bilan de votre status" },
 		{ "p": 1, "t": "En cours de filature dans les quartiers nord" },
