@@ -11,6 +11,7 @@
 	Dialog.Add = function (episode, dialogName) {
 		var dialog = new Codename.Dialog();
 		dialog.create(episode, dialogName);
+		return dialog;
 	};
 
 	Dialog.prototype.create = function (episode, dialogName) {

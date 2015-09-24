@@ -11,18 +11,27 @@
 		Codename.Attach(this);
 	
 		this.div = document.getElementById("codename");
+		
+		// CHAT
+		this.divChatTool = document.createElement("div");
+		this.div.appendChild(this.divChatTool);
+
 		/*this.divMenu = document.createElement("div");
 		this.divMenu.className = "menu";
 		this.div.appendChild(this.divMenu);*/
+
 		this.chatDiv = document.createElement("div");
 		this.chatDiv.className = "chat";
-		this.div.appendChild(this.chatDiv);
+		this.divChatTool.appendChild(this.chatDiv);
 
 		this.choiceDiv = document.createElement("div");
 		this.choiceDiv.className = "choices";
-		this.div.appendChild(this.choiceDiv);
+		this.divChatTool.appendChild(this.choiceDiv);
 
-		Codename.Episode.Add("s01e01");
+		// TOOLS
+		Codename.EpisodeTools.Add(this);
+
+		// Codename.Episode.Add("s01e01");
 	};
 
 	Codename.loadGameObject = function (gameObjectPath, gameObjectRoot, onLoaded) {
@@ -119,6 +128,11 @@
 
 	Codename.prototype.removeChoice = function (div) {
 		this.choiceDiv.removeChild(div);
+	};
+
+	Codename.prototype.addTools = function (toolsDiv) {
+		this.divTools = toolsDiv;
+		this.div.appendChild(this.divTools);
 	};
 
 }());

@@ -19,6 +19,7 @@
 		var textblock = new TextBlock();
 		textblock.init(Codename.instance, option.right);
 		textblock.show(Codename.instance, option.delay, option.text);
+		return textblock;
 	};
 
 	TextBlock.prototype.init = function (codename, right) {

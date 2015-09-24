@@ -7,6 +7,7 @@
 	Episode.Add = function (episodeCode) {
 		var episode = new Codename.Episode();
 		episode.create(episodeCode);
+		return episode;
 	};
 
 	Episode.prototype.create = function (episodeCode) {
