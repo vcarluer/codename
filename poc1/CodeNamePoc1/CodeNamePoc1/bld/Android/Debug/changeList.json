@@ -8,6 +8,7 @@
     "plugins\\cordova-plugin-file\\doc\\ko\\index.md",
     "bower.json",
     "plugins\\cordova-plugin-file\\www\\blackberry10\\resolveLocalFileSystemURI.js",
+    "www\\scripts\\episodeTools.js",
     "res\\icons\\android\\icon-72-hdpi.png",
     "plugins\\cordova-plugin-file\\www\\browser\\FileSystem.js",
     "plugins\\cordova-plugin-file\\www\\blackberry10\\setMetadata.js",
@@ -77,6 +78,7 @@
     "plugins\\cordova-plugin-file\\www\\wp\\FileUploadOptions.js",
     "www\\scripts\\textblock.js",
     "plugins\\cordova-plugin-file\\LICENSE",
+    "www\\scripts\\tool.js",
     "plugins\\cordova-plugin-file\\www\\fileSystemPaths.js",
     "plugins\\cordova-plugin-file\\www\\blackberry10\\createEntryFromNative.js",
     "res\\icons\\ios\\icon-60-3x.png",
@@ -211,20 +213,17 @@
     "plugins\\cordova-plugin-file\\www\\blackberry10\\getMetadata.js",
     "res\\icons\\windows\\Square44x44Logo.scale-240.png",
     "res\\screens\\android\\screen-mdpi-portrait.png",
-    "www\\data\\s01e01\\episode.js",
-    "www\\scripts\\episodeTools.js",
-    "www\\scripts\\tool.js"
+    "www\\data\\s01e01\\episode.js"
   ],
-  "deletedFilesIos": [
-    "www\\scripts\\Tool.js"
-  ],
+  "deletedFilesIos": [],
   "addedPluginsIos": [
     "cordova-plugin-file@3.0.0"
   ],
   "deletedPluginsIos": [],
   "changedFiles": [
-    "www\\scripts\\episodeTools.js",
-    "www\\css\\index.css"
+    "www\\scripts\\dialog.js",
+    "www\\scripts\\textblock.js",
+    "www\\data\\s01e01\\dialog1.json"
   ],
   "deletedFiles": [],
   "addedPlugins": [],

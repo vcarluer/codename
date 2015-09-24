@@ -25,27 +25,69 @@
 	};
 
 	Dialog.prototype.run = function () {
-		if (this.dialog && this.dialog.script) {
-			this.addScript(this.dialog.script);
+	    if (this.dialog) {
+	        if (this.dialog.initialScript) { // Initial script should never start with persona 0
+	            this.addScript(this.dialog.initialScript);
+	        } else {
+	            if (this.dialog.initialChoices) {
+	                this.addChoice(this.dialog.initialChoices, 0);
+	            } else {
+	                console.log("No initial state for dialog");
+	            }
+	        }
 		}
 	}
 
 	Dialog.prototype.addScript = function (script) {
 		if (script) {
-			var totalDelay = 0;
-			for (var i = 0; i < script.length; i++) {
-				var line = script[i];
-				var delay = speed + line.t.split(" ").length * speed;
-				totalDelay += delay;
-				var right = line.p !== 0;
-				Codename.TextBlock.Add({ text: line.t, delay: totalDelay, right: right });
-				if (line.c) {
-					this.addChoice(this.dialog[line.c], totalDelay);
-				}
-			}
+		    this.readLine(script, 0);
 		} else {
 			console.log("script does not exist");
 		}		
+	};
+
+	Dialog.prototype.readLine = function (script, i) {
+	    if (script && i < script.length) {
+	        var self = this;
+	        var line = script[i];
+	        if (line.p === 0 && i > 0) {
+	            var buttonText = "Continuer";
+	            if (line.b)
+	                buttonText = line.b;
+	            this.addChoiceButton({
+	                t: buttonText, f: function () {
+	                    Codename.TextBlock.Add({
+	                        text: line.t, delay: 0, right: false, callback: function () {
+	                            i++;
+	                            if (i < script.length) {
+	                                self.readLine(script, i);
+	                            }
+	                        }
+	                    });
+	                }
+	            });
+	        } else { // Other text line
+	            var delay = 0;
+	            var right = line.p !== 0;
+	            if (right) {
+	                delay = speed + line.t.split(" ").length * speed;
+	            }
+	            Codename.TextBlock.Add({
+	                text: line.t, delay: delay, right: right, callback: function () {
+	                    i++;
+	                    if (i < script.length) {
+	                        self.readLine(script, i);
+	                    }
+	                }
+	            });
+
+	            if (line.c) {
+	                this.addChoice(this.dialog[line.c],delay);
+	            }
+	        }
+	    } else {
+	        console.log("script does not exist");
+	    }
 	};
 
 	Dialog.prototype.addChoice = function (choice, delay) {
@@ -65,23 +107,28 @@
 	Dialog.prototype.addChoiceButton = function (choice, delay) {
 		var self = this;
 		var choiceScript, choiceDialog;
-		if (choice.s.indexOf(".json") > -1) {
-			choiceDialog = choice.s;
-		} else {
-			choiceScript = this.dialog[choice.s];
+		if (!choice.f) {
+		    if (choice.s.indexOf(".json") > -1) {
+		        choiceDialog = choice.s;
+		    } else {
+		        choiceScript = this.dialog[choice.s];
+		    }
 		}
-		 
+
 		var button = Codename.ChoiceButton.Add({
 			text: choice.t,
 			delay: delay,
 			onClick: function () {
-				if (choiceScript) {
-					self.addScript(choiceScript);
-				} else {
-					self.episode.addDialog(choiceDialog);
-				}
-				
-				self.clearButtons();
+			    self.clearButtons();
+			    if (choice.f) {
+			        choice.f();
+			    } else {
+			        if (choiceScript) {
+			            self.addScript(choiceScript);
+			        } else {
+			            self.episode.addDialog(choiceDialog);
+			        }
+			    }
 			}
 		});
 

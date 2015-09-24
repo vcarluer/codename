@@ -1,10 +1,13 @@
 ﻿{
-	"persona": ["dop", "agent1"],
+  "persona": [ "dop", "agent1" ],
+  "initialChoices": {
+    "choices": [{ "t": "Vous êtes là?", "s": "script" }]
+  },
 	"script": [
-		{ "p": 0, "t": "Agent Carter, vous m'entendez?" },
-		{ "p": 0, "t": "C'est très important je dois vous parler?" },
+		{ "p": 0, "t": "Agent Carter, vous êtes là?" },
+		{ "p": 0, "b":  "Insister", "t": "C'est très important je dois vous parler?" },
 		{ "p": 1, "t": "Actif" },
-		{ "p": 0, "t": "Faites-moi un bilan de votre status" },
+		{ "p": 0, "b":  "Status", "t": "Faites-moi un bilan de votre status" },
 		{ "p": 1, "t": "En cours de filature dans les quartiers nord" },
 		{ "p": 1, "t": "Je pense avoir repéré la malette", "c": "choice1"}
 	],
@@ -21,7 +24,7 @@
 	"s1":  [
 		{ "p": 0, "t": "Laisse tomber tout de suite" },
 		{ "p": 1, "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
-		{ "p": 0, "t": "Tu ne sais pas tout" }
+		{ "p": 0, "b": "Clore", "t": "Tu ne sais pas tout" }
 	],
 
 	"s2":  [

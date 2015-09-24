@@ -17,12 +17,12 @@
 
 	TextBlock.Add = function (option) {
 		var textblock = new TextBlock();
-		textblock.init(Codename.instance, option.right);
+		textblock.init(Codename.instance, option.right, option.callback);
 		textblock.show(Codename.instance, option.delay, option.text);
 		return textblock;
 	};
 
-	TextBlock.prototype.init = function (codename, right) {
+	TextBlock.prototype.init = function (codename, right, callback) {
 		this.div = document.createElement("div");
 		this.div.className = "chatLineWrapper";
 		this.divFix = document.createElement("div");
@@ -32,6 +32,7 @@
 		this.divAvatar = document.createElement("div");
 		this.divAvatar.className = "avatar";
 		this.img = document.createElement("img");
+		this.callback = callback;
 		if (right) {
 			this.img.src = "images/av1.png";
 			this.divAvatar.className += " avatarRight";
@@ -71,12 +72,19 @@
 	TextBlock.prototype.show = function (codename, delay, text) {
 		var self = this;
 		if (!delay) {
-			this.directShow(codename, text);
+		    this.realShow(codename, delay, text);
 		} else {
 			setTimeout(function () {
-				self.directShow(codename, text);
+			    self.realShow(codename, delay, text);
 			}, delay);
 		}
+	};
+
+	TextBlock.prototype.realShow = function (codename, delay, text) {
+	    this.directShow(codename, text);
+	    if (this.callback) {
+	        this.callback();
+	    }
 	};
 
 	TextBlock.prototype.directShow = function (codename, text) {
