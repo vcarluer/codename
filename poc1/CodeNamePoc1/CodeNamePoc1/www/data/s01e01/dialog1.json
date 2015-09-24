@@ -1,10 +1,8 @@
 ﻿{
   "persona": [ "dop", "agent1" ],
-  "initialChoices": {
-    "choices": [{ "t": "Vous êtes là?", "s": "script" }]
-  },
-	"script": [
-		{ "p": 0, "t": "Agent Carter, vous êtes là?" },
+  
+	"initialScript": [
+		{ "p": 0, "b":  "Vous êtes là?", "t": "Agent Carter, vous êtes là?" },
 		{ "p": 0, "b":  "Insister", "t": "C'est très important je dois vous parler?" },
 		{ "p": 1, "t": "Actif" },
 		{ "p": 0, "b":  "Status", "t": "Faites-moi un bilan de votre status" },

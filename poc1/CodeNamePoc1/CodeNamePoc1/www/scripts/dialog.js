@@ -26,7 +26,7 @@
 
 	Dialog.prototype.run = function () {
 	    if (this.dialog) {
-	        if (this.dialog.initialScript) { // Initial script should never start with persona 0
+	        if (this.dialog.initialScript) {    
 	            this.addScript(this.dialog.initialScript);
 	        } else {
 	            if (this.dialog.initialChoices) {
@@ -50,10 +50,8 @@
 	    if (script && i < script.length) {
 	        var self = this;
 	        var line = script[i];
-	        if (line.p === 0 && i > 0) {
-	            var buttonText = "Continuer";
-	            if (line.b)
-	                buttonText = line.b;
+	        if (line.p === 0 && line.b) {
+	            var buttonText = line.b;
 	            this.addChoiceButton({
 	                t: buttonText, f: function () {
 	                    Codename.TextBlock.Add({
