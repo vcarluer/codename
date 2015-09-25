@@ -1,8 +1,8 @@
 ﻿{
-	"persona": ["dop", "agent1"],
-	"script": [
-		{ "p": 0, "t": "Continue, très bonne initiative!" },
-		{ "p": 1, "t": "Je vais peut-être avoir besoin de renfort" },
-		{ "p": 0, "t": "Je vais voir si Shark est op" }
+	"persona": ["Carter"],
+	"root": [
+		{ "d": "Continue, très bonne initiative!" },
+		{ "t": "Je vais peut-être avoir besoin de renfort" },
+		{ "b": "essayer", "d": "Je vais voir si Shark est op" }
 	]
 }

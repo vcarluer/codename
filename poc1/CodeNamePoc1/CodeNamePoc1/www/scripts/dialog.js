@@ -1,6 +1,7 @@
 ﻿(function () {
 	"use strict";
-	var speed = 500; //500 or 10
+	var speed = 50; //500 or 10
+	var delayRatio = 3; // 1
 
 	var Dialog = function () {
 		this.choices = [];
@@ -27,34 +28,32 @@
 
 	Dialog.prototype.run = function () {
 	    if (this.dialog) {
-	        if (this.dialog.initialScript) {    
-	            this.addScript(this.dialog.initialScript);
+	        if (this.dialog.root) {    
+	            this.addScript(this.dialog.root);
 	        } else {
-	            if (this.dialog.initialChoices) {
-	                this.addChoice(this.dialog.initialChoices, 0);
-	            } else {
-	                console.log("No initial state for dialog");
-	            }
+	            console.log("No initial state for dialog");
 	        }
-		}
-	}
+	    }
+	};
 
-	Dialog.prototype.addScriptByName = function (scriptName, delay) {
+	Dialog.prototype.addScriptByName = function (scriptName) {
 	    var script = this.dialog[scriptName];
 	    if (script) {
-	        this.addScript(script, delay);
+	        this.addScript(script);
 	    } else {
 	        console.log("bad script name: " + scriptName);
 	    }
 	};
 
-	Dialog.prototype.addScript = function (script, delay) {
+	Dialog.prototype.addScript = function (script) {
 	    if (script) {
 	        var self = this;
-	        if (!delay)
-	            delay = 0;
+	        
+	        this.clearButtons();
+	        if (this.pendingScript)
+	            clearTimeout(this.pendingScript);
 
-	        setTimeout(function () { self.readLine(script, 0); }, delay);
+	        self.readLine(script, 0);
 		} else {
 			console.log("script does not exist");
 		}		
@@ -63,97 +62,98 @@
 	Dialog.prototype.readLine = function (script, i) {
 	    if (script && i < script.length) {
 	        var self = this;
-	        var delay = 0;
 	        var line = script[i];
 	        line.dialog = this;
-	        if (line.p === 0 && line.b) {
-	            var buttonText = line.b;
-	            this.addChoiceButton({
-	                t: buttonText, f: function () {
-	                    Codename.TextBlock.Add({
-	                        text: line.t, delay: 0, right: false, callback: function () {
-	                            i++;
-	                            if (i < script.length) {
-	                                self.readLine(script, i);
-	                            }
-	                        }
-	                    });
+	        var readNext = true;
 
-	                    self.callFunction(line, delay);
-	                }
-	            });
-	        } else { // Other text line
-	            var right = line.p !== 0;
-	            if (right) {
-	                delay = speed + line.t.split(" ").length * speed;
-	            }
-	            Codename.TextBlock.Add({
-	                text: line.t, delay: delay, right: right, callback: function () {
-	                    i++;
-	                    self.callFunction(line, delay);
-	                    if (i < script.length) {
-	                        self.readLine(script, i);
-	                    }
-	                }
-	            });
+	        this.continueScript = function () {
+	            self.readLine(script, i + 1);
+	        };
 
-	            if (line.c) {
-	                this.addChoice(this.dialog[line.c],delay);
-	            }
-	        }        
+	        if (line.b)
+	            this.readButton(line);
+	        else if (line.s)
+	            this.readScript(line);
+	        else if (line.d)
+	            this.readDop(line);
+	        else if (line.t) {
+	            this.readAgent(line);
+	            readNext = false;
+	        }
+	        else if (line.f)
+	            this.readFunction(line);
+
+	        if (readNext)
+	            this.continueScript();
 	    } else {
-	        console.log("script does not exist");
+            if (!script)
+                console.log("script does not exist");
+            else if (i >= script.length)
+                console.log("end if script");
 	    }
 	};
+	 
+    Dialog.prototype.readDop = function (line) {
+        this.readText(line.d);
+    };
 
-	Dialog.prototype.callFunction = function (line, delay) {
+    Dialog.prototype.readAgent = function (line) {
+        var delay = speed + line.t.split(" ").length * speed;
+        this.readText(line.t, delay, true);
+    };
+
+    Dialog.prototype.readText = function (text, delay, right) {
+        var self = this;
+        Codename.TextBlock.Add({
+            text: text, delay: delay / delayRatio, right: right, callback: function () {
+                self.continueScript();
+            }
+        });
+    };
+
+    Dialog.prototype.readFunction = function (line) {
 	    if (line.f) {
-	        var self = this;
-	        setTimeout(function () {
-	            Codename.executeFunction(self.dialogPath, line);
-	        }, delay);
+	        Codename.executeFunction(this.dialogPath, line);
 	    }
 	};
 
-	Dialog.prototype.addChoice = function (choice, delay) {
-		if (choice) {
-			var c, i;
-			var choices = choice.choices;
-			for (i = 0; i < choices.length; i++) {
-				c = choices[i];
-				this.addChoiceButton(c, delay);
-			}
-		} else {
-			console.log("choice does not exist");
-		}
-		
-	};
+    Dialog.prototype.readScript = function (line) {
+        var script, dialog, delay = 0, self = this;
+        if (line.s) {
+            if (line.w)
+                delay = line.w;
 
-	Dialog.prototype.addChoiceButton = function (choice, delay) {
+            if (this.pendingScript)
+                clearTimeout(this.pendingScript);
+
+            this.pendingScript = setTimeout(function () {
+                if (line.s.indexOf(".json") > -1) {
+                    dialog = line.s;
+                    self.episode.addDialog(dialog);
+                } else {
+                    script = self.dialog[line.s];
+                    self.addScript(script);
+                }
+            }, delay / delayRatio);
+        }
+    };
+
+	Dialog.prototype.readButton = function (line) {
 		var self = this;
-		var choiceScript, choiceDialog;
-		if (!choice.f) {
-		    if (choice.s.indexOf(".json") > -1) {
-		        choiceDialog = choice.s;
-		    } else {
-		        choiceScript = this.dialog[choice.s];
-		    }
-		}
-
+		
 		var button = Codename.ChoiceButton.Add({
-			text: choice.t,
-			delay: delay,
+			text: line.b,
 			onClick: function () {
-			    self.clearButtons();
-			    if (choice.f) {
-			        choice.f();
-			    } else {
-			        if (choiceScript) {
-			            self.addScript(choiceScript);
-			        } else {
-			            self.episode.addDialog(choiceDialog);
-			        }
+			    if (line.f) {
+			        self.readFunction(line);
 			    }
+                
+			    if (line.d)
+			        self.readDop(line);
+			    else if (line.s)
+			        self.readScript(line);
+
+			    self.clearButtons();
 			}
 		});
 

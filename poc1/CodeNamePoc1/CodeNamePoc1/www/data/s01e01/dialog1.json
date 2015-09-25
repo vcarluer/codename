@@ -1,37 +1,47 @@
 ﻿{
-  "persona": [ "dop", "agent1" ],
+  "persona": [ "Carter" ],
   
-	"initialScript": [
-		{ "p": 0, "b":  "Vous êtes là?", "t": "Agent Carter, vous êtes là?", "f": "code:this.dialog.addScriptByName('insister', 15000);" }
-   ],
+  "root": [
+	    { "b": "Vous êtes là?", "s": "s1" }
+	  ],
+
+	"s1": [
+      { "d": "Agent Carter, vous êtes là?" },
+		  { "s": "insister", "w": 15000 }
+    ],
 
   "insister": [
-		  { "p": 0, "b":  "Insister", "t": "C'est très important je dois vous parler?" }
+		  { "b": "Insister", "s": "insister2" },
+      { "s": "reponse1", "w": 15000 }
+  ],
+
+  "insister2": [
+      { "d": "C'est très important je dois vous parler?" },
+      { "s":  "reponse1" }
   ],
 
   "reponse1": [
-		{ "p": 1, "t": "Actif" },
-		{ "p": 0, "b":  "Status", "t": "Faites-moi un bilan de votre status" },
-		{ "p": 1, "t": "En cours de filature dans les quartiers nord" },
-		{ "p": 1, "t": "Je pense avoir repéré la malette", "c": "choice1"}
+		  { "t": "Actif" },
+		  { "b":  "Status ?", "s": "status" }
+  ],
+
+  "status": [
+      { "d": "Faites-moi un bilan de votre status" },
+		  { "t": "En cours de filature dans les quartiers nord" },
+		  { "t": "Je pense avoir repéré la malette" },
+		  { "b": "Laisse tomber", "s": "status1" },
+		  { "b": "OK continue", "s": "dialog12.json" },
+      { "s":  "annulation", "w":  15000}
 	],
 
-	"choice1": {
-		"choices": [
-			{ "t": "Laisse tomber", "s": "s1" },
-			{ "t": "OK continue", "s": "dialog12.json" }
-		],
-		"timeout": 10000,
-		"default": "s2"
-	},
-
-	"s1":  [
-		{ "p": 0, "t": "Laisse tomber tout de suite" },
-		{ "p": 1, "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
-		{ "p": 0, "b": "Clore", "t": "Tu ne sais pas tout" }
+	"status1": [
+		{ "d": "Laisse tomber tout de suite" },
+		{ "t": "Ce n'est pas une bonne idée mais comme vous voulez" },
+		{ "b": "Clore", "d": "Tu ne sais pas tout" },
+    { "b": "Ne rien envoyer" }
 	],
 
-	"s2":  [
-		{ "p": 1, "t": "Bon vu que tu ne me réponds pas j'annule tout" }
+	"annulation":  [
+		{ "t": "Bon vu que tu ne me réponds pas j'annule tout" }
 	]
 }

@@ -220,11 +220,7 @@
     "cordova-plugin-file@3.0.0"
   ],
   "deletedPluginsIos": [],
-  "changedFiles": [
-    "www\\scripts\\dialog.js",
-    "www\\scripts\\textblock.js",
-    "www\\data\\s01e01\\dialog1.json"
-  ],
+  "changedFiles": [],
   "deletedFiles": [],
   "addedPlugins": [],
   "deletedPlugins": []
