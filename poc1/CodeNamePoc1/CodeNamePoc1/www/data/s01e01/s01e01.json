@@ -1,0 +1,30 @@
+﻿{
+  "root-6d": [
+    { "e": "attentat", "d": "1d" },
+    { "e": "enquete", "d": "4d" },
+    { "e": "confrontation", "d": "1d" }
+  ],
+  
+  "attentat": [
+    { "e": "menace", "d": "16h" },
+    { "e": "explosion", "d": "2h" },
+    { "e": "course-poursuite", "d": "2h" },
+    { "e": "premieres-pistes", "d": "4h" }
+   ],
+
+  "menace": [
+    { "e": "premier-contact.json", "d": "1h" },
+    { "p": "satellite", "s": "satellite" },
+    { "p": "infiltration", "s": "infiltration" }
+   ],
+
+  "satellite": [
+    { "e":  "deploiement.json", "d": "30m"},
+    { "e":  "filature.json", "d": "1h"}
+  ],
+
+  "infiltration": [
+    { "e":  "infiltration-decision.json", "d": "1h" },
+    { "e":  "frontiere", "d": "1h"}
+  ]
+}
