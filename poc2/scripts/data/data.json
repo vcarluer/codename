@@ -1,0 +1,94 @@
+{
+    "meta" : {
+        "operation" : "test",
+        "version" : "0.1"
+    },
+    "contacts" : {
+        "johnSmith" : {
+            "name" : "Smith, John",
+            "isKnown" : true,
+            "typingSpeed" : 1.2
+        },
+        "janeDoe" : {
+            "name" : "Doe, Jane",
+            "isKnown" : true,
+            "typingSpeed" : 0.9
+        }
+    },
+    "messagesHistory" : {
+        "johnSmith" : [
+            {
+                "text" : "Hi !", 
+                "time" : "mardi 22 septembre 2015 14:03:37"
+            }, {
+                "text" : "Who are you ?", 
+                "time" : "mardi 22 septembre 2015 14:03:37",
+                "isMine" : true
+            }, {
+                "text" : "A friend. Trust me", 
+                "time" : "mardi 22 septembre 2015 14:03:37"
+            }
+        ], 
+        "janeDoe" : []
+    },
+    "events" : {
+        "eventId1" : {
+            "require" : "window.console.log(game.msg); return true;",
+            "fn" : "window.console.log(' played event 1 : ' + new Date());",
+            "triggers" : "eventId2",
+            "triggerDelay" : "3s"
+        },
+        "eventId2" : {
+            "fn" : "window.console.log(' played event 2 : ' + new Date());",
+            "message" : {
+                "contactId" : "janeDoe",
+                "messageId" : "messageId1"
+            }
+        },
+        "eventId3" : {
+            "fn" : "window.console.log(' played event 3 : ' + new Date());"
+        },
+        "firstEvents" : [ "eventId1" ]
+    },
+    "messages" : {
+        "messageId1" : {
+            "text" : "I need more intel",
+            "answers" : [
+              { 
+                  "text" : "What do you want to know ?", 
+                  "next" : "messageId2",
+                  "triggers" : "eventId3"
+              },
+              { 
+                  "text" : "You WANT more intel. You do not need it. Live with it and do your job",  
+                  "triggerDelay" : "3s", 
+                  "doc" : "janeDoeResignation",
+                  "fn" : "window.console.log('she is going to betray you, now');"
+              }
+            ],
+            "noAnswer" : {
+                "triggerDelay" : "1m", 
+                "fn" : "window.console.log('well, she was going to betray you anyway');"
+            }
+        },
+        "messageId2" : {
+            "text" : "Tell me the whole truth about him"
+        }
+    },
+    "documents" : {
+        "doc1" : {
+            "title" : "Document 1",
+            "author" : "Documentation service",
+            "isKnown" : true,
+            "content" : "Hello world"
+            
+        },
+        "janeDoeResignation" : {
+            "title" : "Resignation",
+            "author" : "Doe, Jane",
+            "isKnown" : false,
+            "content" : "I quit, sucker."
+            
+        }
+    }
+}

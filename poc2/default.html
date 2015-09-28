@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" >
+  <title>CodeName</title>
+  <meta name="description" content="descr">
+  <meta name="author" content="author">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script data-main="scripts/main" src="scripts/require.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="loader">connection...</div>
+    <div id="title">
+        <p><strong>Codename</strong></p>
+        <button id="btn-authentication">authentication</button>
+    </div>
+    <div id="desktop" class="app">
+        <a id="dsk-contacts" class="dsk-app-btn">messages<span class="label">0</span></a>
+        <a id="dsk-documents" class="dsk-app-btn">documents<span class="label">0</span></a>
+        <a id="dsk-agenda" class="dsk-app-btn">agenda<span class="label">0</span></a>
+        <a id="dsk-news" class="dsk-app-btn">fil d'information<span class="label">0</span></a>
+        <div id="dsk-clock">
+          <div id="dsk-clock-date"></div>
+          <div id="dsk-clock-time"></div>
+        </div>
+    </div>
+    <div id="contacts" class="app">
+      <header id="dsk-cnt-header" class="app-header">
+        <h1>contacts</h1>
+        <a id="dsk-cnt-header-back" class="app-btn-back">back</a>
+      </header>
+      <ul id="dsk-cnt-list" class="app-list"></ul>
+    </div>
+    <div id="messaging" class="app">
+      <header id="dsk-msg-header" class="app-header">
+        <h1>messages</h1>
+        <a id="dsk-msg-header-back" class="app-btn-back">back</a>
+        <div id="dsk-msg-header-info"></div>        
+      </header>
+      <ul id="dsk-msg-conversation" class="app-list">
+      </ul>
+      <ul id="dsk-msg-choice" class="app-list">
+      </ul>
+    </div>
+    <div id="documents" class="app">
+      <header id="dsk-doc-header" class="app-header">
+        <h1>documents</h1>
+        <a id="dsk-doc-header-back" class="app-btn-back">back</a>
+        <div id="dsk-doc-header-info"></div>        
+      </header>
+      <ul id="dsk-doc-list" class="app-list"></ul>
+      <div id="dsk-doc-document"></div>
+    </div>    
+    <div id="app-notification" class="fade-out out" style="display:none">
+        <p id="app-notification-text"></p>
+        <a id="app-notification-action"></a>
+    </div>
+  </div>
+</body>
+</html>
