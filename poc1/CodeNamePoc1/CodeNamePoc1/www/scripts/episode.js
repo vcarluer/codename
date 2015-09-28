@@ -26,8 +26,8 @@
 		}
 	}
 
-	Episode.prototype.addDialog = function (dialogName) {
-		Codename.Dialog.Add(this, dialogName);
+	Episode.prototype.addDialog = function (dialogName, scriptName) {
+		Codename.Dialog.Add(this, dialogName, scriptName);
 	}
 
 }());

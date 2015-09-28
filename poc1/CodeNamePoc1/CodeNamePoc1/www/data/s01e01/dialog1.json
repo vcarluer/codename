@@ -22,7 +22,8 @@
 
   "reponse1": [
 		  { "t": "Actif" },
-		  { "b":  "Status ?", "s": "status" }
+		  { "b":  "Status ?", "s": "status" },
+      { "s": "defaultstatus", "w":  15000}
   ],
 
   "status": [
@@ -33,6 +34,13 @@
 		  { "b": "OK continue", "s": "dialog12.json" },
       { "s":  "annulation", "w":  15000}
 	],
+
+  "defaultstatus":  [
+      { "t":  "J'ai repété la malette" },
+      { "t":  "filature en cours"},
+      { "b":  "plus d'info", "d": "Donnez-moi plus d'info agent"},
+      { "s":  "dialog12.json", "l": "defaultrenfort", "w":  15000}
+  ],
 
 	"status1": [
 		{ "d": "Laisse tomber tout de suite" },

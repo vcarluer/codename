@@ -9,29 +9,31 @@
 
 	Codename.Dialog = Dialog;
 
-	Dialog.Add = function (episode, dialogName) {
+	Dialog.Add = function (episode, dialogName, script) {
 		var dialog = new Codename.Dialog();
-		dialog.create(episode, dialogName);
+		dialog.create(episode, dialogName, script);
 		return dialog;
 	};
 
-	Dialog.prototype.create = function (episode, dialogName) {
+	Dialog.prototype.create = function (episode, dialogName, script) {
 		var self = this;
 		this.dialogPath = episode.episodePath;
 		this.episode = episode;
 		Codename.loadGameObject(this.dialogPath, dialogName, function (dialog) {
 		    self.dialog = dialog;
 		    dialog.dialog = self;
-			self.run();
+			self.run(script);
 		});
 	};
 
-	Dialog.prototype.run = function () {
+	Dialog.prototype.run = function (script) {
 	    if (this.dialog) {
-	        if (this.dialog.root) {    
+	        if (script && this.dialog[script]) {
+	            this.addScript(this.dialog[script]);
+	        } else if (this.dialog.root) {    
 	            this.addScript(this.dialog.root);
 	        } else {
-	            console.log("No initial state for dialog");
+	            console.log("No script or initial state for dialog");
 	        }
 	    }
 	};
@@ -129,7 +131,8 @@
             this.pendingScript = setTimeout(function () {
                 if (line.s.indexOf(".json") > -1) {
                     dialog = line.s;
-                    self.episode.addDialog(dialog);
+                    script = line.l
+                    self.episode.addDialog(dialog, script);
                 } else {
                     script = self.dialog[line.s];
                     self.addScript(script);

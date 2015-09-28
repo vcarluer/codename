@@ -2,6 +2,10 @@
 	"persona": ["Carter"],
 	"root": [
 		{ "d": "Continue, très bonne initiative!" },
+    { "s": "renfort" }
+    ],
+
+  "defaultrenfort": [
 		{ "t": "Je vais peut-être avoir besoin de renfort" },
 		{ "b": "essayer", "d": "Je vais voir si Shark est op" }
 	]
