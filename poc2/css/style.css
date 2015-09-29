@@ -26,24 +26,25 @@ body {
 }
 
 #app-notification {
-    border:1px solid #999;
-    border-radius: 10px;
-    position:absolute;
-    z-index:9999;
-    bottom:10px;
-    height:80px;
-    width:90%;
-    padding:10px;
-    background-color:#fff;
+  border:1px solid #999;
+  border-radius: 10px;
+  position:absolute;
+  z-index:9999;
+  bottom:10px;
+  height:60px;
+  width:90%;
+  padding:10px;
+  background-color:#fff;
 }
 
 #app-notification  p, #app-notification  a {
-    line-height:12px;
+  line-height:12px;
+  margin-bottom:8px;
 }
 
 #app-notification-action:hover{
-    font-weight:bold;
-    cursor:pointer;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 #fingerprint {
@@ -91,6 +92,7 @@ body {
   margin-top:15px;
   padding-top:15px;
   border-top:1px solid #999;
+  min-height: 120px;
 }
 
 .dsk-app-btn {
@@ -100,7 +102,7 @@ body {
   height: 50px;
   line-height:50px;
   border:1px solid #999;
-  padding:0 20px;  
+  padding:0 20px;
   position:relative;
 }
 .dsk-app-btn:hover {
@@ -116,7 +118,7 @@ body {
   right:0;
   background-color:#ccc;
   text-align:center;
-   
+
 }
 
 #dsk-clock {
@@ -194,7 +196,7 @@ body {
    opacity: 0;
    transition: opacity .5s ease-in-out;
    -moz-transition: opacity .5s ease-in-out;
-   -webkit-transition: opacity .5s ease-in-out    
+   -webkit-transition: opacity .5s ease-in-out
 }
 
 .in {
@@ -210,4 +212,9 @@ body {
 
 .out {
     opacity: 0;
+}
+
+#dsk-doc-document {
+    padding:10px;
+    color:#555;
 }
